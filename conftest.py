@@ -1,6 +1,11 @@
 import pytest
-from module import Browser
+from selenium_wrapper.module import Browser
+from framework.base.pages_transfer import Transfer
+
+
 @pytest.fixture(scope="function")
 def browser():
-    with Browser() as b:
-        yield b
+    transfer = Transfer()
+    with Browser(transfer=transfer) as __browser:
+        yield __browser
+
